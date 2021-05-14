@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbu.mapper.LinkMapper">
+
+    <select id="getListByPage" resultType="Link">
+        select * from blog_link  limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(*) from blog_link
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from blog_link where id = #{id}
+    </delete>
+
+    <!--save-->
+    <insert id="save" parameterType="Link">
+       insert into  blog_link VALUES(null,#{title},#{summary},#{url},null,null)
+    </insert>
+
+    <select id="getById" parameterType="int" resultType="Tag">
+         select * from  blog_link where id = #{id}
+    </select>
+
+    <delete id="deleteAll" parameterType="list">
+        delete from blog_link where id in
+
+        <foreach collection="list"
+                 item="s" open="(" close=")" separator=",">
+            #{s}
+        </foreach>
+    </delete>
+
+    <select resultType="Link" id="list">select * from blog_link </select>
+</mapper>

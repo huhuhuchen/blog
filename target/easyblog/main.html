@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="asserts/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="asserts/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="asserts/layui/css/layui.css">
+	</head>
+	<body>
+		<!-- header -->
+		<div class="header navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						秃头宝贝博客后台管理系统
+					</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:logout()"><span class="glyphicon glyphicon-log-out">&nbsp;</span>安全退出</a>
+					</li>
+				</ul>
+
+				<form class="navbar-form navbar-right" role="search">
+				  <div class="form-group">
+					<input type="text" class="form-control" placeholder="关键字">
+				  </div>
+				  <button type="submit" class="btn btn-default">
+					  <span class="glyphicon glyphicon-search"></span>
+				  </button>
+				</form>
+
+			</div>
+		</div>
+		<!-- header end -->
+
+		<div class="body">
+			<!-- 侧边栏 -->
+			<div class="left">
+				<!-- 用户信息 -->
+				<div class="user-info">
+					<div class="info-icon">
+						<img src="img/14.jpg" width="80px" height="80px" class="img-circle" alt="">
+					</div>
+					<div class="info-name">秃头宝贝</div>
+				</div>
+				<!-- 菜单 -->
+				<div class="list-group text-center">
+					<a href="main.html" class="list-group-item active"><i class="fa fa-dashboard"></i> 仪表盘</a>
+					<a href="banner.html" class="list-group-item"><i class="fa fa-file-image-o"></i> 轮播管理</a>
+					<a href="blog.html" class="list-group-item"><i class="fa fa-file-text-o"></i> 博客管理</a>
+					<a href="category.html" class="list-group-item"><i class="fa fa-bars"></i> 类别管理</a>
+					<a href="tag.html" class="list-group-item"><i class="fa fa-tags"></i> 标签管理</a>
+					<a href="comment.html" class="list-group-item"><i class="fa fa-comment"></i> 留言管理</a>
+					<a href="link.html" class="list-group-item"><i class="fa fa-chain"></i> 友情链接</a>
+					<a href="ad.html" class="list-group-item"><i class="fa fa-rmb"></i> 广告管理</a>
+					<a href="settings.html" class="list-group-item"><i class="fa fa-gear"></i> 个人设置</a>
+				</div>
+				<div class="copy">Design by 秃头宝贝 &copy; 软帝集团 版权所有</div>
+			</div>
+
+			<!-- 内容展示区 -->
+			<div class="right">
+				<ol class="breadcrumb">
+					<li><i class="fa fa-dashboard"></i> 仪表盘</li>
+				</ol>
+				<div class="container-fluid">
+					<blockquote>
+						信息总览
+					</blockquote>
+					<!-- 统计信息 -->
+					<div class="count">
+						<div class="count-item">
+							<span class="fa fa-user fa-2x"></span><br>
+							管理员<br>
+							<span id="usercount" class="number"></span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-file fa-2x"></span><br>
+							文章<br>
+							<span id="blog" class="number"></span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-comment  fa-2x"></span><br>
+							留言<br>
+							<span id="com" class="number"></span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-list fa-2x"></span><br>
+							类别<br>
+							<span id="category" class="number"></span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-comment fa-2x"></span><br>
+							评论<br>
+							<span class="number">36541条</span>
+						</div>
+						<div  class="count-item ">
+							<span class="fa fa-tags fa-2x  "></span><br>
+							<a href="tag.html" class="layui-bg-white" >标签<br></a>
+							<span id="tag" class="number"></span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-rmb fa-2x"></span><br>
+							广告<br>
+							<span class="number">10条</span>
+						</div>
+						<div class="count-item">
+							<span class="fa fa-eye fa-2x"></span><br>
+							访问量<br>
+							<span class="number">238653次</span>
+						</div>
+					</div><!-- 统计信息end -->
+					<blockquote>
+						登录信息
+					</blockquote>
+					<!-- 系统信息 -->
+					<div class="stat">
+						<table class="table table-striped">
+							<tr>
+								<td>登录人:</td>
+								<td>秃头宝贝</td>
+								<td>登录次数:</td>
+								<td>22</td>
+							</tr>
+							<tr>
+								<td>上次登录时间:</td>
+								<td>2019-01-01 11:22:13</td>
+								<td>本次登录时间:</td>
+								<td>2019-01-02 15:33:14</td>
+							</tr>
+							<tr>
+								<td>上次登录IP:</td>
+								<td>10:22:189:119</td>
+								<td>本次登录IP:</td>
+								<td>26:122:150:11</td>
+							</tr>
+						</table>
+					</div><!-- 系统信息end -->
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="asserts/layer/layer.js"></script>
+		<script src="asserts/layui/layui.js"></script>
+		<script src="js/comm.js"></script>
+
+		<script>
+			layui.use('layer',function()
+			{
+				var layer = layui.layer;
+
+				layer.ready(function()
+				{
+					$.get("/user/count",{},
+
+					function(resp)
+					{
+						$("#usercount").html(resp+"人");
+
+					});
+
+
+					$.get("/blog/count",{},
+
+							function(resp)
+							{
+								$("#blog").html(resp+"篇");
+
+							});
+
+					$.get("/com/count",{},
+
+							function(resp)
+							{
+								$("#com").html(resp+"条");
+
+							});
+
+					$.get("/category/count",{},
+
+							function(resp)
+							{
+								$("#category").html(resp+"个");
+
+							});
+
+
+					$.get("/tag/count",{},
+
+							function(resp)
+							{
+								$("#tag").html(resp+"个");
+
+							});
+
+				});
+
+
+
+
+			});
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="asserts/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="asserts/font-awesome-4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/main.css">
+		<style>
+			.zoomImage{
+				 max-height:100px;
+			  }
+		</style>
+	</head>
+	<body>
+		<!-- header -->
+		<div class="header navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand"  href="#">
+						秃头宝贝博客后台管理系统
+					</a>
+				</div>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:logout()"><span class="glyphicon glyphicon-log-out">&nbsp;</span>安全退出</a>
+					</li>
+				</ul>
+				
+				<form class="navbar-form navbar-right" role="search">
+				  <div class="form-group">
+					<input type="text" class="form-control" placeholder="关键字">
+				  </div>
+				  <button type="submit" class="btn btn-default">
+					  <span class="glyphicon glyphicon-search"></span>
+				  </button>
+				</form>		
+								
+			</div>
+		</div>
+		<!-- header end -->
+		
+		<div class="body">
+			<!-- 侧边栏 -->
+			<div class="left">
+				<!-- 用户信息 -->
+				<div class="user-info">
+					<div class="info-icon">
+						<img src="img/14.jpg" width="80px" height="80px" class="img-circle" alt="">
+					</div>
+					<div class="info-name">秃头宝贝</div>
+				</div>
+				<!-- 菜单 -->
+				<div class="list-group text-center">
+					<a href="main.html" class="list-group-item"><i class="fa fa-dashboard"></i> 仪表盘</a>
+					<a href="banner.html" class="list-group-item"><i class="fa fa-file-image-o"></i> 轮播管理</a>
+					<a href="blog.html" class="list-group-item"><i class="fa fa-file-text-o"></i> 博客管理</a>
+					<a href="category.html" class="list-group-item"><i class="fa fa-bars"></i> 类别管理</a>
+					<a href="tag.html" class="list-group-item"><i class="fa fa-tags"></i> 标签管理</a>
+					<a href="comment.html" class="list-group-item"><i class="fa fa-comment"></i> 留言管理</a>
+					<a href="link.html" class="list-group-item"><i class="fa fa-chain"></i> 友情链接</a>
+					<a href="ad.html" class="list-group-item"><i class="fa fa-rmb"></i> 广告管理</a>
+					<a href="settings.html" class="list-group-item active"><i class="fa fa-gear"></i> 个人设置</a>
+				</div>
+				<div class="copy">Design by 秃头宝贝 &copy; 软帝集团 版权所有</div>
+			</div>
+			
+			<!-- 内容展示区 -->
+			<div class="right">
+				<ol class="breadcrumb">
+					<li><i class="fa fa-gear"></i> 个人设置</li>
+				</ol>
+				<div class="container-fluid">				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>个人信息修改</strong>
+						</div>
+						<div class="panel-body">
+							<form action="" class="form col-xs-6 col-xs-offset-3">
+								<div class="form-group">
+									<label for="sr-only">头像设置</label>
+									<input type="file" id="headicon" name="headicon" />
+									<br />
+									<img src="img/14.jpg" id="preview-headicon" class="zoomImage" alt="" />
+								</div>
+								<div class="form-group">
+									<label for="sr-only">二维码设置</label>
+									<input type="file" id="qrcode"  name="qrcode" />
+									<br />
+									<img src="img/qrcode.jpg" id="preview-qrcode" class="zoomImage" alt="" />
+								</div>
+								<div class="form-group">
+									<label for="" class="sr-only">账号</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-user"></span>
+										</div>
+										<input type="text" name="nickname" class="form-control" disabled readonly  placeholder="秃头宝贝"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="sr-only">昵称</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-tag"></span>
+										</div>
+										<input type="text" name="nickname" class="form-control"  placeholder="请输入昵称"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="sr-only">手机号码</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-phone-alt"></span>
+										</div>
+										<input type="text" name="phone" class="form-control"  placeholder="请输入手机号"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="sr-only">邮箱地址</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-envelope"></span>
+										</div>
+										<input type="text" name="email" class="form-control"  placeholder="请输入邮箱地址"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="sr-only">个人简介</label>
+								    <textarea name="email" class="form-control"  placeholder="请输入个人简介" rows="5"></textarea>
+								</div>
+								<div class="form-group">
+									<button class="btn btn-primary" type="submit">修改</button>
+									<button class="btn btn-danger" type="reset">重置</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 		js插件 -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="asserts/layer/layer.js"></script>
+		<script src="asserts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="js/comm.js"></script>
+		
+		<script>
+			$(function(){
+				//图片预览
+				$('#headicon,#qrcode').on('change',function(){
+					var that = $(this);
+					var reader = new FileReader();
+					//读取图片文件
+					reader.readAsDataURL($(this).get(0).files[0]);
+					//当图片文件被加载时获取资源(base64编码)
+					reader.onload=function(e){
+						$('#preview-'+that.attr('id')).attr('src',e.target.result);
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,537 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--	<head>-->
+<!--		<meta charset="utf-8">-->
+<!--		<title></title>-->
+<!--		<link rel="stylesheet" type="text/css" href="asserts/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>-->
+<!--		<link rel="stylesheet" href="asserts/font-awesome-4.7.0/css/font-awesome.min.css" />-->
+<!--		<link rel="stylesheet" href="css/main.css">-->
+<!--		<link rel="stylesheet" href="asserts/layui/layui/css/layui.css"/>-->
+<!--	</head>-->
+<!--	<body>-->
+<!--		&lt;!&ndash; header &ndash;&gt;-->
+<!--		<div class="header navbar navbar-default">-->
+<!--			<div class="container-fluid">-->
+<!--				<div class="navbar-header">-->
+<!--					<a class="navbar-brand"  href="#">-->
+<!--						秃头宝贝博客后台管理系统-->
+<!--					</a>-->
+<!--				</div>-->
+<!--				-->
+<!--				<ul class="nav navbar-nav navbar-right">-->
+<!--					<li>-->
+<!--						<a href="javascript:logout()"><span class="glyphicon glyphicon-log-out">&nbsp;</span>安全退出</a>-->
+<!--					</li>-->
+<!--				</ul>-->
+<!--				-->
+<!--				<form class="navbar-form navbar-right" role="search">-->
+<!--				  <div class="form-group">-->
+<!--					<input type="text" class="form-control" placeholder="关键字">-->
+<!--				  </div>-->
+<!--				  <button type="submit" class="btn btn-default">-->
+<!--					  <span class="glyphicon glyphicon-search"></span>-->
+<!--				  </button>-->
+<!--				</form>		-->
+<!--								-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		&lt;!&ndash; header end &ndash;&gt;-->
+<!--		-->
+<!--		<div class="body">-->
+<!--			&lt;!&ndash; 侧边栏 &ndash;&gt;-->
+<!--			<div class="left">-->
+<!--				&lt;!&ndash; 用户信息 &ndash;&gt;-->
+<!--				<div class="user-info">-->
+<!--					<div class="info-icon">-->
+<!--						<img src="img/14.jpg" width="80px" height="80px" class="img-circle" alt="">-->
+<!--					</div>-->
+<!--					<div class="info-name">秃头宝贝</div>-->
+<!--				</div>-->
+<!--				&lt;!&ndash; 菜单 &ndash;&gt;-->
+<!--				<div class="list-group text-center">-->
+<!--					<a href="main.html" class="list-group-item"><i class="fa fa-dashboard"></i> 仪表盘</a>-->
+<!--					<a href="banner.html" class="list-group-item"><i class="fa fa-file-image-o"></i> 轮播管理</a>-->
+<!--					<a href="blog.html" class="list-group-item"><i class="fa fa-file-text-o"></i> 博客管理</a>-->
+<!--					<a href="category.html" class="list-group-item"><i class="fa fa-bars"></i> 类别管理</a>-->
+<!--					<a href="tag.html" class="list-group-item "><i class="fa fa-tags"></i> 标签管理</a>-->
+<!--					<a href="comment.html" class="list-group-item active"><i class="fa fa-comment"></i> 留言管理</a>-->
+<!--					<a href="link.html" class="list-group-item"><i class="fa fa-chain"></i> 友情链接</a>-->
+<!--					<a href="ad.html" class="list-group-item"><i class="fa fa-rmb"></i> 广告管理</a>-->
+<!--					<a href="settings.html" class="list-group-item"><i class="fa fa-gear"></i> 个人设置</a>-->
+<!--				</div>-->
+<!--				<div class="copy">Design by 秃头宝贝 &copy; 软帝集团 版权所有</div>-->
+<!--			</div>-->
+<!--			-->
+<!--			&lt;!&ndash; 内容展示区 &ndash;&gt;-->
+<!--			<div class="right">-->
+<!--					&lt;!&ndash; 	导航 &ndash;&gt;-->
+<!--					<ol class="breadcrumb">-->
+<!--						<li><i class="fa fa-tags"></i> 留言管理</li>-->
+<!--					</ol>-->
+<!--					<div class="container-fluid">-->
+<!--						&lt;!&ndash; 	内容面板 &ndash;&gt;-->
+<!--						<div class="panel panel-default">-->
+<!--							&lt;!&ndash; 控制按钮 &ndash;&gt;-->
+
+<!--							&lt;!&ndash;头工具栏 按钮&ndash;&gt;-->
+
+<!--							<div class="panel-body">-->
+<!--								<script type="text/html" id="toolbarDemo">-->
+<!--								<div class="layui-btn-container">-->
+<!--									<button class="layui-btn layui-btn-sm fa fa-plus" lay-event="addTag" >添加留言</button>-->
+<!--									<button class="layui-btn layui-btn-sm fa fa-trash" lay-event="deleteAll">批量删除</button>-->
+<!--								</div>-->
+<!--								</script>-->
+
+<!--								<table id="mytable" lay-filter="test"></table>-->
+
+<!--							</div>-->
+<!--						</div>&lt;!&ndash; 	内容面板 end &ndash;&gt;-->
+<!--					</div>-->
+<!--			</div>&lt;!&ndash; 	内容展示区 end&ndash;&gt;-->
+<!--		</div>-->
+<!--		-->
+<!--		&lt;!&ndash; 弹层组件 添加标签 &ndash;&gt;-->
+<!--		<div class="modal fade"  id="addTagModal" role="dialog" aria-labelledby="mylabel">-->
+<!--			<div class="modal-dialog">-->
+<!--				<div class="modal-content">-->
+<!--					<form action="" >-->
+<!--						<div class="modal-header">-->
+<!--							<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>-->
+<!--							<h4 class="modal-title" id="mylabel">添加留言</h4>-->
+<!--						</div>-->
+<!--						<div class="modal-body">-->
+<!--							<input type="text" class="form-control" id="tname" name="tnane"  placeholder="请输入留言"/>-->
+<!--						</div>-->
+<!--						<div class="modal-footer">-->
+<!--							<button class="btn btn-primary"  lay-submit lay-filter="myTag">添加</button>-->
+<!--							<button class="btn btn-default" type="button" data-dismiss="modal">取消</button>-->
+<!--						</div>-->
+<!--					</form>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>&lt;!&ndash; 弹层组件 添加标签 end &ndash;&gt;-->
+<!--		-->
+<!--		&lt;!&ndash; 		js插件 &ndash;&gt;-->
+<!--		<script src="js/jquery-3.2.1.min.js"></script>-->
+<!--		<script src="asserts/layer/layer.js"></script>-->
+<!--		<script src="asserts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>-->
+<!--		<script src="js/comm.js"></script>-->
+<!--		<script src="asserts/layui/layui/layui.js"></script>-->
+
+
+<!--		<script>-->
+<!--            layui.use(['table','layer','util','element','jquery','form','upload',], function(){-->
+<!--                var table = layui.table;-->
+<!--                var layer=layui.layer;-->
+<!--                var util=layui.util;-->
+<!--                var element=layui.element;-->
+<!--                var $ =layui.jquery;-->
+<!--				var form = layui.form;-->
+<!--				var upload = layui.upload;-->
+<!--				var formData = {};-->
+
+<!--                //第一个实例-->
+<!--                table.render({-->
+<!--                    elem: '#mytable'-->
+<!--                    // ,height: 500-->
+<!--                    ,url: '/comment/list' //数据接口-->
+<!--                    ,toolbar: '#toolbarDemo'//头工具栏-->
+<!--					, cols: [[ //表头-->
+<!--						{type: 'checkbox', fixed: 'left'}   // 增加复选框 用于删除选中-->
+<!--						, {field: 'id', title: 'id', sort: true, fixed: 'left'}-->
+<!--						, {field: 'content', title: '留言'}-->
+<!--						, {field: 'ctime', title: '时间',}-->
+<!--						, {field: 'cname', title: '名称',}-->
+<!--						, {field: 'email', title: '邮箱',}-->
+<!--						, {fixed: 'right', toolbar: '#barDemo'}-->
+
+<!--					]],-->
+<!--                });-->
+<!--                //触发事件-->
+<!--                //触发事件-->
+<!--                table.on('toolbar(test)', function(obj){-->
+<!--                    var checkStatus = table.checkStatus(obj.config.id);-->
+<!--                    //获取选中的数据-->
+<!--                    var dataObj=checkStatus.data;-->
+<!--                    switch(obj.event){-->
+<!--                        case 'save':-->
+<!--                            alert('添加留言');-->
+
+<!--                            break;-->
+<!--                        case 'deleteAll':-->
+<!--                            layer.msg('批量删除'+dataObj);-->
+<!--                            layer.confirm("确认批量删除吗？",function (index) {-->
+<!--                                //确认删除的回调方法，获取选中dataObj的id-->
+<!--                                var ids="";-->
+<!--                                for(var i in dataObj){-->
+<!--                                    ids+=dataObj[i].id+",";-->
+<!--                                }-->
+<!--                                //处理一个最后的逗号-->
+<!--                                ids = ids.substring(0,ids.length-1);-->
+<!--                                layer.alert("要删除的id"+ids);-->
+<!--                                //发送ajax请求-->
+<!--                                $.get("/users/deleteAll",{ids:ids},function (resp) {-->
+<!--                                    if(resp.code==0){-->
+<!--                                        layer.alert("批量删除成功",function () {-->
+<!--                                            table.reload('mytable')-->
+<!--                                        })-->
+<!--                                    }else{-->
+<!--                                        layer.msg("批量删除失败");-->
+<!--                                    }-->
+<!--                                })-->
+
+<!--                            })-->
+<!--                            break;-->
+
+<!--                    };-->
+<!--                });-->
+
+<!--            })-->
+
+<!--			//常规使用 - 普通图片上传-->
+<!--			var uploadInst = upload.render({-->
+<!--				elem: '#test1'  // 指定上传的按钮组件-->
+<!--				,url: '/users/save' //改成您自己的上传接口-->
+<!--				,auto:false   // 不立马提交 ，需要绑定一个提交按钮-->
+<!--				,bindAction:'#btnSubmit'   // 绑定提交按钮-->
+<!--				,data :formData   // 附带表单数据 到后台-->
+<!--				,field : 'file'  //  默认提交的文件域的name属性 是 file-->
+<!--				,choose: function(obj){-->
+<!--					//预读本地文件示例，不支持ie8-->
+<!--					obj.preview(function(index, file, result){-->
+<!--						$('#demo1').attr('src', result); //图片链接（base64）-->
+<!--					});-->
+
+<!--					// 将表单的数据获取 并复制-->
+<!--					formData = form.val('adminAdd');-->
+<!--					// 更新需要提交的数据-->
+<!--					this.data = formData;-->
+<!--				}-->
+<!--				,done: function(res){-->
+
+<!--					//上传成功的一些操作   将上传成功的地址url地址 添加到-->
+<!--					// $('#demoText').html(''); //置空上传失败的状态-->
+<!--					if(res.code==0){-->
+<!--						//跳转用户列表页面-->
+<!--						location.href="userList.html";-->
+<!--					}else{-->
+<!--						//上传失败-->
+<!--						layer.msg(res.code+"-&#45;&#45;"+res.message);-->
+<!--					}-->
+<!--				}-->
+<!--				,error: function(){-->
+<!--					//演示失败状态，并实现重传-->
+<!--					layer.msg("上传失败！！");-->
+<!--				}-->
+
+<!--			});-->
+<!--		</script>-->
+
+<!--	</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="asserts/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="asserts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="asserts/layer/mobile/need/layer.css" />
+	<link rel="stylesheet" href="asserts/layui/css/layui.css" />
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="asserts/layui/css/layui.css">
+</head>
+<body>
+<!-- header -->
+<div class="header navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand"  href="#">
+				秃头宝贝博客后台管理系统
+			</a>
+		</div>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="javascript:logout()"><span class="glyphicon glyphicon-log-out">&nbsp;</span>安全退出</a>
+			</li>
+		</ul>
+
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="关键字">
+			</div>
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+		</form>
+
+	</div>
+</div>
+<!-- header end -->
+
+<div class="body">
+	<!-- 侧边栏 -->
+	<div class="left">
+
+		<!-- 用户信息 -->
+		<div class="user-info">
+			<div class="info-icon">
+				<img id="headerImg" src="img/14.jpg" width="80px" height="80px" class="img-circle" alt="">
+			</div>
+			<div class="info-name">秃头宝贝</div>
+		</div>
+
+		<!-- 菜单 -->
+		<div class="list-group text-center">
+			<a href="main.html" class="list-group-item"><i class="fa fa-dashboard"></i> 仪表盘</a>
+			<a href="banner.html" class="list-group-item"><i class="fa fa-file-image-o"></i> 轮播管理</a>
+			<a href="blog.html" class="list-group-item"><i class="fa fa-file-text-o"></i> 博客管理</a>
+			<a href="category.html" class="list-group-item  "><i class="fa fa-bars"></i> 类别管理</a>
+			<a href="tag.html" class="list-group-item"><i class="fa fa-tags"></i> 标签管理</a>
+			<a href="comment.html" class="list-group-item active"><i class="fa fa-comment"></i> 留言管理</a>
+			<a href="link.html" class="list-group-item"><i class="fa fa-chain"></i> 友情链接</a>
+			<a href="ad.html" class="list-group-item"><i class="fa fa-rmb"></i> 广告管理</a>
+			<a href="settings.html" class="list-group-item"><i class="fa fa-gear"></i> 个人设置</a>
+		</div>
+		<div class="copy">Design by 秃头宝贝 &copy; 软帝集团 版权所有</div>
+	</div>
+
+
+	<!-- 内容展示区 -->
+	<div class="right">
+		<!-- 	导航 -->
+		<ol class="breadcrumb">
+			<li><i class="fa fa-bars"></i> 留言管理</li>
+		</ol>
+		<div class="container-fluid">
+			<table id="mytable" lay-filter="test"></table>
+
+
+			<div id="add" style="display: none;margin-top: 20px">
+				<form id="name" class="layui-form" action="" lay-filter="add">
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">请输入你的留言</label>
+						<div class="layui-input-inline">
+							<input type="text" name="content" placeholder="请输入留言" class="layui-input"
+								   required lay-verify="required">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="cname" required  lay-verify="required"
+								   placeholder="请输入名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<!--					<div class="layui-form-item">-->
+					<!--						<label class="layui-form-label">sort号</label>-->
+					<!--						<div class="layui-input-inline">-->
+					<!--							<input type="text" name="sort" required  lay-verify="required"-->
+					<!--								   placeholder="请输入sort号" autocomplete="off" class="layui-input">-->
+					<!--						</div>-->
+					<!--					</div>-->
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- 		js插件 -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="asserts/layer/layer.js"></script>
+<script src="asserts/layui/layui.js"></script>
+<script src="asserts/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="js/comm.js"></script>
+
+<script type="text/html" id="toolbarDemo">
+	<div class="layui-btn-container">
+		<button class="layui-btn layui-btn-sm" lay-event="add">
+			<i class="layui-icon layui-icon-add-circle"></i>
+			添加留言
+		</button>
+
+		<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="deleteAll">批量删除</button>
+	</div>
+</script>
+
+<!--  行工具栏时间 -->
+<script type="text/html" id="barDemo">
+	<a class="layui-btn layui-btn-xs" lay-event="status">修改</a>
+	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+	layui.use(['table','util','layer','element','jquery'],function(){
+		var table = layui.table;
+		var util = layui.util;
+		var layer = layui.layer;
+		var element = layui.element;
+		var $ = layui.jquery;
+
+		//第一个实例
+		table.render({
+			elem: '#mytable'
+			//,height:500
+			,url: '/comment/list' //数据接口
+			,page: true //开启分页   默认一页显示10行
+			,toolbar: '#toolbarDemo'
+			,limit:5  //一页显示5行
+
+			,cols: [[ //表头
+				{type:'checkbox',fixed:'left'}//增加复选框， 用于删除选择
+				,{field: 'id', title: 'ID', sort: true, fixed: 'left'}
+				,{field: 'content', title: '留言'}
+				,{field: 'cname', title: '名称'}
+				,{field: 'ctime', title: '时间'}
+				,{fixed:'right',title:'操作',width:200,toolbar:'#barDemo'}
+
+			]]
+		});
+		//触发事件   test 对应table中的filter
+		table.on('toolbar(test)', function(obj){
+			var checkStatus = table.checkStatus(obj.config.id);
+			//获取选中数据
+			var dataObj=checkStatus.data;
+			switch(obj.event){
+				case 'deleteAll':
+					layer.msg('批量删除'+dataObj);
+					layer.confirm("确认批量删除吗？",function (index) {
+						var ids="";
+						//确认删除的回调方法  获取选中数据的data的id
+						for (var i in dataObj){
+							ids+=dataObj[i].id+",";
+						}
+						//处理掉最后一个，
+						ids=ids.substring(0,ids.length-1);
+						layer.alert("你要删除的id:"+ids);
+						//发送ajax请求，
+						$.get("/comment/deleteAll",{ids:ids},function (resp) {
+							if (resp.code==0){
+								layer.alert("删除成功");
+
+								//刷新表格数据
+								table.reload("mytable");
+							}else{
+								layer.alert("删除失败");
+							}
+						});
+					});
+					break;
+			};
+		});
+
+
+		//监听头部工具条事件
+		table.on('toolbar(test)', function(obj){
+			switch (obj.event){
+				case 'add':
+					layer.open({
+						type: 1
+						,title:"添加留言"
+						, content: $('#add')
+						, area: '380px'
+						, btn: ['yes', 'no']
+						, yes: function (index, layero) {
+							$.post('/comment/save', $('#name').serialize(), function (resp) {
+								if (resp.code === 0) {
+									location.reload();
+								} else {
+									layer.msg(resp.msg);
+								}
+							});
+						}
+					});
+					break;
+				case 'deleteAll':
+					var checkStatus = table.checkStatus(obj.config.id);
+					//获取选中数据
+					var dataObj=checkStatus.data;
+					layer.msg('批量删除'+dataObj);
+					layer.confirm("确认批量删除吗？",function (index) {
+						var ids="";
+						//确认删除的回调方法  获取选中数据的data的id
+						for (var i in dataObj){
+							ids+=dataObj[i].id+",";
+						}
+						//处理掉最后一个，
+						ids=ids.substring(0,ids.length-1);
+						layer.alert("你要删除的id:"+ids);
+						//发送ajax请求，
+						$.get("/comment/deleteAll",{ids:ids},function (resp) {
+							if (resp.code==0){
+								layer.alert("删除成功");
+
+								//刷新表格数据
+								table.reload("mytable");
+								layer.close(index);
+							}else{
+								layer.alert("删除失败");
+							}
+						});
+					});
+					break;
+			}
+		});
+
+		//工具条事件
+		table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+			var data = obj.data; //获得当前行数据
+			var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+			var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+			if(layEvent === 'status'){ //启用 禁用
+				//do somehing
+				layer.msg("id---"+data.id);
+
+				$.get("/category/updateStatus",{id:data.id,status:data.status},function (resp) {
+					if(resp.code==0){
+						layer.alert("操作成功",function(index){
+							table.reload('mytable');
+							layer.close(index);
+						});
+					}else{
+						layer.msg("对不起，"+resp.message);
+					}
+
+				});
+
+			} else if(layEvent === 'del'){ //删除
+				layer.confirm('确认删除吗', function(index){
+					layer.close(index);
+					//向服务端发送删除指令
+
+					// 删除 后台数据
+					$.get("/comment/delete",{id:data.id},
+							function(resp){
+								if(resp.code==0){
+									layer.alert("删除成功",function(index){
+										table.reload('mytable');
+										layer.close(index);
+									});
+								}else{
+									layer.msg("对不起，"+resp.message);
+								}
+							});
+				});
+			}
+		});
+	});
+</script>
+
+</body>
+</html>

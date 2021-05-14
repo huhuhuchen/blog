@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbu.mapper.BlogMapper">
+
+    <resultMap id="blogID" type="Blog">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="summary" property="summary"/>
+        <result column="content" property="content"/>
+        <result column="vcount" property="vcount"/>
+        <result column="pcount" property="pcount"/>
+        <result column="ptime" property="ptime"/>
+        <result column="cid" property="cid"/>
+        <result column="tags" property="tags"/>
+        <result column="sort" property="sort"/>
+        <association property="category" javaType="Category">
+            <id column="id" property="id"/>
+            <result column="cname" property="cname"/>
+            <result column="describe" property="describe"/>
+            <result column="sort" property="sort"/>
+        </association>
+    </resultMap>
+    <select id="getListByPage" resultMap="blogID">
+         select
+        b.id,b.cid,b.title,b.tags,b.ptime,c.cname
+        from blog_blog b
+        left join blog_category c
+        on b.cid = c.id
+        limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(*) from blog_blog
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from blog_blog where id = #{id}
+    </delete>
+
+    <!--save-->
+    <insert id="save" parameterType="Blog">
+       insert INTO blog_blog VALUES(NULL,#{title},#{summary},NULL,NULL,NULL,NULL,#{cid},#{tags},NULL )
+    </insert>
+
+    <select id="getById" parameterType="int" resultType="Blog">
+         select * from  blog_blog where id = #{id}
+    </select>
+
+    <delete id="deleteAll" parameterType="list">
+        delete from blog_blog where id in
+
+        <foreach collection="list"
+                 item="s" open="(" close=")" separator=",">
+            #{s}
+        </foreach>
+    </delete>
+
+    <select id="list" resultType="Blog">
+        select * from blog_blog
+    </select>
+
+    <select id="tagNameLike" resultType="Blog">
+        select * from blog_blog where tags = #{tags}
+    </select>
+
+</mapper>

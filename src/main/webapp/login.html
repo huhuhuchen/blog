@@ -1,0 +1,51 @@
+<!-- html5页面的文档类型定义 -->
+<!DOCTYPE html>
+<!-- 网页根标签：有且只能有一对 -->
+<html>
+	<!-- 头部定义：设置页面编码，网页标题，网页描述等设置信息 -->
+	<head>
+		<!-- 设置页面编码 -->
+		<meta charset="utf-8" />
+		<!-- 设置网页标题 -->
+		<title>易书博客后台管理-用户登录</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+		<!-- 导入font-awesome字体图标库 -->
+		<link rel="stylesheet" type="text/css" href="asserts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	</head>
+	<!-- 网页的主体部分，页面结构代码核心编辑区域 -->
+	<body>
+		<div class="login">
+			<div class="login-title">
+				<h2>秃头宝贝博客用户登录</h2>
+			</div>
+			<div class="login-form">
+				<form action="/toLogin" method="get">
+					<div class="input-group">
+						<i class="login-icon fa fa-user"></i>
+						<input type="text" id="name" name="username" class="input-txt" placeholder="用户名">
+					</div>
+					<div class="input-group">
+						<i class="login-icon fa fa-lock"></i>
+						<input type="password" id="pwd" name="password" class="input-txt" placeholder="密码">
+					</div>
+					<!-- 记住账号密码 -->
+					<div class="remember">
+						<a href="">
+							<i class="fa fa-square-o"></i>
+						</a>
+						<span class="remember-txt">记住我</span>
+					</div>
+					<div class="btn-box">
+						<button class="btn-login" id="btn-login" type="submit">登&nbsp;&nbsp;录</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 引入jQuery库 -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<!-- 引入layerJS库 -->
+		<script src="asserts/layer/layer.js"></script>
+		<!-- 引入外部的脚本文件（JS） -->
+	
+	</body>
+</html>

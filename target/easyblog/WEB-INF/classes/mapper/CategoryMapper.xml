@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbu.mapper.CategoryMapper">
+
+    <select id="getById" parameterType="int" resultType="Category">
+                select * from blog_category where id= #{id}
+    </select>
+
+    <!-- 查询分页信息   startNum ：map中的key名称   pageSize：map中的key名称 -->
+    <select id="getListByPage" parameterType="map" resultType="Category">
+        select * from blog_category limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(*) from blog_category
+    </select>
+
+    <!-- delete-->
+    <delete id="delete" parameterType="int">
+        delete from blog_category where id = #{id}
+    </delete>
+
+    <!--    save-->
+    <insert id="save" parameterType="Category">
+        insert into blog_category values(null,#{cname},#{describe},#{sort})
+    </insert>
+
+    <!--  deleteAll  -->
+    <delete id="deleteAll" parameterType="list">
+        delete from blog_category where id in
+        <foreach collection="list"
+                 item="s" open="(" close=")" separator=",">
+            #{s}
+        </foreach>
+    </delete>
+
+    <select id="list" resultType="Category">
+         select * from blog_category
+    </select>
+
+</mapper>

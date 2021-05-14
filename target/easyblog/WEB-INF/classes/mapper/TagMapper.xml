@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbu.mapper.TagMapper">
+
+    <select id="getListByPage" resultType="Tag">
+        select id,tname from blog_tag  limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(*) from blog_tag
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from blog_tag where id = #{id}
+    </delete>
+
+    <!--save-->
+    <insert id="save" parameterType="Tag">
+      insert  INTO blog_tag VALUES(null,#{tname})
+    </insert>
+
+    <select id="getById" parameterType="int" resultType="Tag">
+         select * from  blog_tag where id = #{id}
+    </select>
+
+    <delete id="deleteAll" parameterType="list">
+        delete from blog_tag where id in
+
+        <foreach collection="list"
+                 item="s" open="(" close=")" separator=",">
+            #{s}
+        </foreach>
+    </delete>
+
+    <select resultType="Tag" id="tagList">select DISTINCT tname from blog_tag </select>
+
+    <select resultType="Tag" id="list">select * from blog_tag</select>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <!-- 扫描包-->
+    <context:component-scan base-package="com.wbu"/>
+
+    <!-- 1、引入 视图解析器   ResourceViewResovler 解析视图器的实现类-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 设置 响应地址的前缀和后缀-->
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".html"/>
+    </bean>
+
+    <!--2、引入 springmvc注解驱动类-->
+    <mvc:annotation-driven/>
+
+    <!-- 3、过滤静态资源-->
+    <mvc:default-servlet-handler/>
+
+
+    <!-- 文件上传bean   这里的id 必须写  multipart-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置文件上传组件-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 设置文件上传的最大上限  单位 字节-->
+        <property name="maxUploadSize" value="10485760999999"/>
+
+    </bean>
+
+</beans>

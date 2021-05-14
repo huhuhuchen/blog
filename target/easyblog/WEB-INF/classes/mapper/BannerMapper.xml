@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbu.mapper.BannerMapper">
+    <!-- 根据id查询用户信息
+     id : 必须是接口的方法名
+     parameterType ：接口的参数类型
+     resultType: 接口的返回值
+     #{id} : 获取方法的参数
+     -->
+    <select id="selectById" parameterType="int" resultType="Banner">
+        select * from blog_banner where id = #(id)
+    </select>
+    
+    <select id="seleteByTitle" parameterType="string" resultType="Banner">
+        select  * from  blog_banner where title = #{title}
+    </select>
+
+    <!-- 查询分页信息   startNum ：map中的key名称   pageSize：map中的key名称 -->
+    <select id="getListByPage" parameterType="map" resultType="Banner">
+        select * from blog_banner  limit #{startNum}, #{pageSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(*) from blog_banner
+    </select>
+
+<!--  updateSort  -->
+    <select id="updateSort" parameterType="map">
+        update blog_banner set sort= #{sort} where  id = #{id}
+    </select>
+
+    <!-- delete-->
+    <delete id="delete" parameterType="int">
+        delete from blog_banner where id = #{id}
+    </delete>
+
+    <!--save-->
+    <insert id="save" parameterType="Banner">
+        insert into blog_banner values(null, #{title},#{summary},#{path},#{sort})
+    </insert>
+
+    <!--    deleteAll    动态sql拼接 foreach-->
+    <select id="deleteAll" parameterType="list">
+        delete from blog_banner where id in
+        <foreach collection="list"
+                 item="s"  open="(" close=")" separator=",">
+            #{s}
+        </foreach>
+    </select>
+
+    <select resultType="Banner" parameterType="Banner" id="getList">
+        select * from blog_banner
+    </select>
+</mapper>
